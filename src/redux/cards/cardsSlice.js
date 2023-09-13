@@ -10,7 +10,6 @@ const cardsSlice = createSlice({
   initialState: cardsInitialState,
   reducers: {
     updateCards(state, action) {
-      console.log(action.payload);
       for (const card of state.items) {
         if (card.id === action.payload) {
           card.liking = !card.liking;
@@ -39,7 +38,7 @@ const cardsSlice = createSlice({
     builder.addCase(fetchMoviesForTrending.pending, (state, action) => {
       return {
         ...state,
-        isLoading: false,
+        isLoading: true,
       };
     });
     builder.addCase(fetchMoviesForTrending.rejected, (state, action) => {

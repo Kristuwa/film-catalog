@@ -4,6 +4,10 @@ export const FooterContainer = styled.footer`
   padding: 15px;
   border-top: 1px solid #a1a1a1;
   text-align: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 `;
 
 export const Text = styled.p`
