@@ -24,6 +24,7 @@ function App() {
             id,
             overview,
             poster_path,
+            liking: false,
           })
         );
         setFilmsList(normalizedResults);
