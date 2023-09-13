@@ -1,8 +1,10 @@
+import { FooterContainer, Text } from "./Footer.styled";
+
 export const Footer = () => {
   return (
-    <footer>
-      <p>Created by Kristina Krasovskaya</p>
+    <FooterContainer>
+      <Text>Created by Kristina Krasovskaya</Text>
       <p>2023</p>
-    </footer>
+    </FooterContainer>
   );
 };

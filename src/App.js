@@ -17,7 +17,6 @@ function App() {
         );
 
         const { results } = response.data;
-        console.log(results);
         setFilmsList(results);
       } catch (error) {
         console.error(error);

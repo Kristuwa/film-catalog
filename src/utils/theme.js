@@ -1,8 +1,9 @@
 export const theme = {
   color: {
-    primaryColor: "#EBD8FF",
-    secondaryColor: "#373737",
-    bgBtn: "#EBD8FF",
-    accentColor: "#5CD3A8",
+    primaryColor: "#303639",
+    secondaryColor: "#555659",
+    thirdColor: "#e00000",
+    bgBtn: "#555659",
+    accentColor: "#8f9198",
   },
 };
