@@ -1,39 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FilmsList } from "./components/FilmsList/FilmsList";
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
 import { theme } from "./utils/theme";
 import { ThemeProvider } from "styled-components";
-import axios from "axios";
-import { MOVIEDB_KEY } from "./constants/constansts";
 import { Title, MainContainer } from "./App.styled";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMoviesForTrending } from "./redux/operations";
+import { getCards } from "./redux/selectors";
 
 function App() {
-  const [filmsList, setFilmsList] = useState([]);
-  useEffect(() => {
-    const fetchQueryResultsForTrending = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/trending/movie/week?api_key=${MOVIEDB_KEY}`
-        );
+  const dispatch = useDispatch();
+  const filmsList = useSelector(getCards);
 
-        const { results } = response.data;
-        const normalizedResults = results.map(
-          ({ original_title, id, overview, poster_path }) => ({
-            original_title,
-            id,
-            overview,
-            poster_path,
-            liking: false,
-          })
-        );
-        setFilmsList(normalizedResults);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchQueryResultsForTrending();
-  }, []);
+  useEffect(() => {
+    if (filmsList.length === 0) {
+      dispatch(fetchMoviesForTrending());
+    }
+  }, [dispatch, filmsList]);
+
   return (
     <ThemeProvider theme={theme}>
       <Header />

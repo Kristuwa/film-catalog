@@ -9,15 +9,21 @@ import {
 } from "./FilmItem.styled";
 import { AiOutlineClose, AiOutlineHeart } from "react-icons/ai";
 import { FcLike } from "react-icons/fc";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteCards, updateCards } from "../../redux/cards/cardsSlice";
 
-export const FilmItem = ({ id, title, overview, path }) => {
+export const FilmItem = ({ id, title, overview, path, liking }) => {
   const imageUrl = `https://image.tmdb.org/t/p/w500/${path}`;
-  const [like, setLike] = useState(false);
+  const dispatch = useDispatch();
+
   return (
     <Item>
       <div>
-        <ButtonClose type="button" aria-label="close">
+        <ButtonClose
+          type="button"
+          aria-label="close"
+          onClick={() => dispatch(deleteCards(id))}
+        >
           <AiOutlineClose size={20} />
         </ButtonClose>
         <Image alt={title} src={imageUrl} height="auto" width="270" />
@@ -26,10 +32,10 @@ export const FilmItem = ({ id, title, overview, path }) => {
       </div>
       <ButtonLike
         type="button"
-        onClick={() => setLike((prevState) => !prevState)}
+        onClick={() => dispatch(updateCards(id))}
         aria-label="add like"
       >
-        {like ? (
+        {liking ? (
           <FcLike size={24} color={"#e00000"} />
         ) : (
           <AiOutlineHeart size={24} />
@@ -44,4 +50,5 @@ FilmItem.propTypes = {
   overview: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  liking: PropTypes.bool.isRequired,
 };
