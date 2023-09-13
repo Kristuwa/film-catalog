@@ -15,8 +15,10 @@ function App() {
         const response = await axios.get(
           `https://api.themoviedb.org/3/trending/movie/week?api_key=${MOVIEDB_KEY}`
         );
-        console.log(response.data);
-        setFilmsList(response.data);
+
+        const { results } = response.data;
+        console.log(results);
+        setFilmsList(results);
       } catch (error) {
         console.error(error);
       }
