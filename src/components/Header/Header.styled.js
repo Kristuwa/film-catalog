@@ -7,5 +7,6 @@ export const HeaderContainer = styled.header`
 
 export const Logo = styled.div`
   display: flex;
+  align-items: center;
   gap: 10px;
 `;

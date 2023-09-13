@@ -6,6 +6,7 @@ import { theme } from "./utils/theme";
 import { ThemeProvider } from "styled-components";
 import axios from "axios";
 import { MOVIEDB_KEY } from "./constants/constansts";
+import { Title, MainContainer } from "./App.styled";
 
 function App() {
   const [filmsList, setFilmsList] = useState([]);
@@ -17,7 +18,15 @@ function App() {
         );
 
         const { results } = response.data;
-        setFilmsList(results);
+        const normalizedResults = results.map(
+          ({ original_title, id, overview, poster_path }) => ({
+            original_title,
+            id,
+            overview,
+            poster_path,
+          })
+        );
+        setFilmsList(normalizedResults);
       } catch (error) {
         console.error(error);
       }
@@ -28,11 +37,14 @@ function App() {
     <ThemeProvider theme={theme}>
       <Header />
       <main>
-        {filmsList.length > 0 ? (
-          <FilmsList list={filmsList} />
-        ) : (
-          <p>There is no films at list</p>
-        )}
+        <MainContainer>
+          <Title>Movies in the trends of the week</Title>
+          {filmsList.length > 0 ? (
+            <FilmsList list={filmsList} />
+          ) : (
+            <p>There is no films at list</p>
+          )}
+        </MainContainer>
       </main>
       <Footer />
     </ThemeProvider>

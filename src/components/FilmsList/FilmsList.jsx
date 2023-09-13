@@ -1,8 +1,10 @@
 import { FilmItem } from "../FilmItem/FilmItem";
+import PropTypes from "prop-types";
+import { List } from "./FilmsList.styled";
 
 export const FilmsList = ({ list }) => {
   return (
-    <ul>
+    <List>
       {list.map(({ original_title, id, overview, poster_path }) => (
         <FilmItem
           key={id}
@@ -12,6 +14,17 @@ export const FilmsList = ({ list }) => {
           path={poster_path}
         />
       ))}
-    </ul>
+    </List>
   );
+};
+
+FilmsList.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.exact({
+      original_title: PropTypes.string.isRequired,
+      overview: PropTypes.string.isRequired,
+      poster_path: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+    }).isRequired
+  ).isRequired,
 };
