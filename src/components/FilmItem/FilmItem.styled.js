@@ -19,7 +19,7 @@ export const ButtonClose = styled.button`
 
   border: none;
   background-color: transparent;
-  color: ${(props) => props.theme.colors.bgBtn};
+  color: ${(props) => props.theme.colors.colorBtn};
 
   transition: color 250ms linear;
 
