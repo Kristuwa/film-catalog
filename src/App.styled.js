@@ -24,7 +24,7 @@ export const Message = styled.p`
 
 export const ButtonFilter = styled.button`
   display: block;
-  width: 150px;
+  width: 170px;
   height: 30px;
   margin-left: auto;
   margin-right: 140px;
