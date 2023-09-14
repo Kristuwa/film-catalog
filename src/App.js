@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { FilmsList } from "./components/FilmsList/FilmsList";
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
@@ -29,13 +29,15 @@ function App() {
     }
   }, [dispatch, filmsList]);
 
-  const getLikingCards = (list) => {
-    if (filter) {
-      return list.filter((item) => item.liking);
-    } else {
-      return list;
-    }
-  };
+  const getLikingCards = useMemo(() => {
+    return (list) => {
+      if (filter) {
+        return list.filter((item) => item.liking);
+      } else {
+        return list;
+      }
+    };
+  }, [filter]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -43,22 +45,22 @@ function App() {
         <Header />
         <main>
           <MainContainer>
-            <Title>Movies in the trends of the week</Title>
+            <Title>Фильмы</Title>
             {filmsList.length > 0 && !isLoading && !isError && (
               <>
                 <ButtonFilter
                   type="button"
                   onClick={() => dispatch(setFilter())}
                 >
-                  {filter ? "Show all" : "Show liking"}
+                  {filter ? "Все" : "Понравившиеся"}
                 </ButtonFilter>
                 <FilmsList list={getLikingCards(filmsList)} />
               </>
             )}
             {filmsList.length === 0 && !isLoading && !isError && (
-              <Message>There is no films at list</Message>
+              <Message>Нет фильмов в списке</Message>
             )}
-            {isLoading && !isError && <Message>Loading...</Message>}
+            {isLoading && !isError && <Message>Загрузка...</Message>}
             {!isLoading && isError && <Message>{isError}</Message>}
           </MainContainer>
         </main>

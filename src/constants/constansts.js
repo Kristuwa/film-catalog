@@ -1,1 +1,1 @@
-export const MOVIEDB_KEY = "e5b8bd1b82d4f5b68280cf1e2b92e5f6";
+export const MOVIEDB_KEY = "7JRT0A6-0AB4ACR-P6RQ9HZ-GQ9TFWS";

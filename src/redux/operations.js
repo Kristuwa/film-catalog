@@ -2,21 +2,25 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { MOVIEDB_KEY } from "../constants/constansts";
 
+const headers = {
+  "X-API-KEY": MOVIEDB_KEY,
+};
+
 export const fetchMoviesForTrending = createAsyncThunk(
   "cards/fetchAll",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/trending/movie/week?api_key=${MOVIEDB_KEY}`
-      );
+      const response = await axios.get(`https://api.kinopoisk.dev/v1.3/movie`, {
+        headers,
+      });
 
-      const { results } = response.data;
-      const normalizedResults = results.map(
-        ({ original_title, id, overview, poster_path }) => ({
-          original_title,
+      const { docs } = response.data;
+      const normalizedResults = docs.map(
+        ({ name, id, description, poster: { url } }) => ({
+          original_title: name,
           id,
-          overview,
-          poster_path,
+          overview: description,
+          poster_path: url,
           liking: false,
         })
       );

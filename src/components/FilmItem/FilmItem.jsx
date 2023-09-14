@@ -13,7 +13,6 @@ import { useDispatch } from "react-redux";
 import { deleteCards, updateCards } from "../../redux/cards/cardsSlice";
 
 export const FilmItem = ({ id, title, overview, path, liking }) => {
-  const imageUrl = `https://image.tmdb.org/t/p/w500/${path}`;
   const dispatch = useDispatch();
 
   return (
@@ -26,7 +25,7 @@ export const FilmItem = ({ id, title, overview, path, liking }) => {
         >
           <AiOutlineClose size={20} />
         </ButtonClose>
-        <Image alt={title} src={imageUrl} height="auto" width="270" />
+        <Image alt={title} src={path} height="auto" width="270" />
         <TitleCard>{title}</TitleCard>
         <BottomTextCard>{overview}</BottomTextCard>
       </div>
@@ -47,7 +46,7 @@ export const FilmItem = ({ id, title, overview, path, liking }) => {
 
 FilmItem.propTypes = {
   title: PropTypes.string.isRequired,
-  overview: PropTypes.string.isRequired,
+  overview: PropTypes.string,
   path: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   liking: PropTypes.bool.isRequired,
