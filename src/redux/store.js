@@ -9,10 +9,12 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import { filtersReducer } from "./filter/filtersSlice";
 
 export const store = configureStore({
   reducer: {
     cards: cardsReducer,
+    filters: filtersReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
