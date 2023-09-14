@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/films-catalog/static/css/main.27022e8d.css",
-    "main.js": "/films-catalog/static/js/main.6c003add.js",
+    "main.js": "/films-catalog/static/js/main.db82ae9b.js",
     "static/media/Montserrat-SemiBold.ttf": "/films-catalog/static/media/Montserrat-SemiBold.62b8eee010e3957d425f.ttf",
     "static/media/Montserrat-Medium.ttf": "/films-catalog/static/media/Montserrat-Medium.a281f04d4c8926e7dea1.ttf",
     "index.html": "/films-catalog/index.html",
     "main.27022e8d.css.map": "/films-catalog/static/css/main.27022e8d.css.map",
-    "main.6c003add.js.map": "/films-catalog/static/js/main.6c003add.js.map"
+    "main.db82ae9b.js.map": "/films-catalog/static/js/main.db82ae9b.js.map"
   },
   "entrypoints": [
     "static/css/main.27022e8d.css",
-    "static/js/main.6c003add.js"
+    "static/js/main.db82ae9b.js"
   ]
 }
